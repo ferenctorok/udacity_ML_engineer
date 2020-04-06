@@ -24,6 +24,7 @@ def model_fn(model_dir):
     print("model_info: {}".format(model_info))
 
     # Determine the device and construct the model.
+    print('cuda is available.') if torch.cuda.is_available() else print('cuda is NOT available.')
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = LSTMClassifier(model_info['embedding_dim'], model_info['hidden_dim'], model_info['vocab_size'])
 
@@ -69,7 +70,30 @@ def train(model, train_loader, epochs, optimizer, loss_fn, device):
     
     # TODO: Paste the train() method developed in the notebook here.
 
-    pass
+    for epoch in range(1, epochs + 1):
+        model.train()
+        total_loss = 0
+        for batch in train_loader:         
+            batch_X, batch_y = batch
+            
+            batch_X = batch_X.to(device)
+            batch_y = batch_y.to(device)
+            
+            # TODO: Complete this train method to train the model provided.
+            
+            # zero the parameter gradients
+            optimizer.zero_grad()
+            
+            # forward pass
+            out = model.forward(batch_X)
+            loss = loss_fn(out, batch_y)
+            
+            # backward pass:
+            loss.backward()
+            optimizer.step()
+            
+            total_loss += loss.data.item()
+        print("Epoch: {}, BCELoss: {}".format(epoch, total_loss / len(train_loader)))
 
 
 if __name__ == '__main__':
