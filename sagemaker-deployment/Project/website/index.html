@@ -15,7 +15,7 @@
              xhr.onload = function() {
                  var result = parseFloat(xhr.responseText);
                  var resultElement = document.getElementById('result');
-                 if (result == 0) {
+                 if (result < 0.5) {
                      resultElement.className = 'bg-danger';
                      resultElement.innerHTML = 'Your review was NEGATIVE!';
                  } else {
