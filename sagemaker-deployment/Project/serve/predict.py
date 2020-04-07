@@ -55,7 +55,7 @@ def input_fn(serialized_input_data, content_type):
 
 def output_fn(prediction_output, accept):
     print('Serializing the generated output.')
-    return str(prediction_output).encode('utf-8')
+    return str(prediction_output)
 
 def predict_fn(input_data, model):
     print('Inferring sentiment of input data.')
