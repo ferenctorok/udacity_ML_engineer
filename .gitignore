@@ -1,2 +1,4 @@
-sagemaker-deployment/data/aclImdb/
-sagemaker-deployment/data/aclImdb_v1.tar.gz
+course_3_sagemaker-deployment/data/aclImdb/
+course_3_sagemaker-deployment/data/aclImdn.tar.gz
+course_4_ML_sagemaker_studies/Payment_Fraud_Detection/creditcard.csv
+course_4_ML_sagemaker_studies/Payment_Fraud_Detection/creditcardfraud.zip
